@@ -23,7 +23,8 @@ public class StorageFile {
     /* Note: Note the use of nested classes below.
      * More info https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
      */
-
+    
+    
     /**
      * Signals that the given file path does not fulfill the storage filepath constraints.
      */
@@ -96,13 +97,16 @@ public class StorageFile {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(toSave, fileWriter);
 
-        } catch (IOException ioe) {
+        }catch (FileNotFoundException fnfe) {
+            final AddressBook empty = new AddressBook();
+            save(empty);
+    	}catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
         } catch (JAXBException jaxbe) {
             throw new StorageOperationException("Error converting address book into storage format");
         }
     }
-
+    
     /**
      * Loads data from this storage file.
      *

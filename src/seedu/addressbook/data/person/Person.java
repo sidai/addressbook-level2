@@ -5,7 +5,7 @@ import seedu.addressbook.data.tag.UniqueTagList;
 import java.util.Objects;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Person in the address book (with sequence number added).
  * Guarantees: details are present and not null, field values are validated.
  */
 public class Person implements ReadOnlyPerson {

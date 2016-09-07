@@ -13,7 +13,6 @@ public class Phone {
     public static final String PHONE_VALIDATION_REGEX = "\\d+";
 
     public final String value;
-    private boolean isPrivate;
 
     /**
      * Validates given phone number.
@@ -21,7 +20,7 @@ public class Phone {
      * @throws IllegalValueException if given phone string is invalid.
      */
     public Phone(String phone, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+    	this.setPrivate(isPrivate);
         phone = phone.trim();
         if (!isValidPhone(phone)) {
             throw new IllegalValueException(MESSAGE_PHONE_CONSTRAINTS);
@@ -53,7 +52,4 @@ public class Phone {
         return value.hashCode();
     }
 
-    public boolean isPrivate() {
-        return isPrivate;
-    }
 }

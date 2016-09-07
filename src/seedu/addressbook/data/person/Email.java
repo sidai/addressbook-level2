@@ -14,7 +14,6 @@ public class Email {
     public static final String EMAIL_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
 
     public final String value;
-    private boolean isPrivate;
 
     /**
      * Validates given email.
@@ -22,7 +21,7 @@ public class Email {
      * @throws IllegalValueException if given email address string is invalid.
      */
     public Email(String email, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+    	this.setPrivate(isPrivate);
         email = email.trim();
         if (!isValidEmail(email)) {
             throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);
@@ -54,8 +53,4 @@ public class Email {
         return value.hashCode();
     }
 
-
-    public boolean isPrivate() {
-        return isPrivate;
-    }
 }

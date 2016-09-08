@@ -26,7 +26,6 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Person toAdd;
-    public static ArrayList<Tagging> tagActions = new ArrayList<Tagging> ();
 
     /**
      * Convenience constructor using raw values.
@@ -41,7 +40,6 @@ public class AddCommand extends Command {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
-            tagActions.add(new Tagging("+" + name + "[" + tagName + "]"));
         }
         this.toAdd = new Person(
                 new Name(name),
